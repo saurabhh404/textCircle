@@ -1,0 +1,37 @@
+<head>
+	<title>textcircle</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<a href="#" class="navbar-brand">Sauchan's TextCircle</a>
+		</div>
+	</nav>
+
+	<!-- {{> date_display}} -->
+	<div class="container top-margin">
+		<div class="row">
+			<div class="col-sm-12 col-md-6 col-lg-6">
+				{{>editor}}
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-6">
+				{{>viewer}}
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+<!--
+<template name="date_display">
+	{{current_date}}
+</template> -->
+
+<template name="editor">
+	{{> sharejsCM docid=docid onRender=config id="editor"}}
+</template>
+<template name="viewer">
+	<iframe id="viewer_iframe" width="100%" height="100%"></iframe>
+</template>
