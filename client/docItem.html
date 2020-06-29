@@ -1,0 +1,69 @@
+<template name="docItem">
+    <div class="container top-margin">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                {{>docMeta}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                {{>editingUsers}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                {{>editor}}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                {{>viewer}}
+            </div>
+        </div>
+    </div>
+    <!-- {{> insertCommentForm}} -->
+</template>
+
+
+
+<template name="editor">
+    {{> sharejsCM docid=docid onRender=config id="editor"}}
+</template>
+<template name="viewer">
+    <iframe id="viewer_iframe" width="100%" height="100%"></iframe>
+</template>
+
+<template name="docMeta">
+    {{#with document}}
+    <span>
+        <h1>{{>editableText collection="documents" field="title"}}</h1>
+    </span>
+    {{#if canEdit}}
+    <div class="checkbox">
+        <label><input type="checkbox" class="js-tog-private" checked="{{isPrivate}}"> Private</label>
+    </div>
+    {{/if}}
+    {{/with}}
+</template>
+
+<template name="editingUsers">
+    Editors:
+    {{#each users}}
+    <span class="label label-info">{{firstname}}</span>
+    {{/each}}
+    <hr>
+</template>
+<!-- 
+<template name="insertCommentForm2">
+    {{> quickForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
+</template>
+
+<template name="insertCommentForm">
+    {{#autoForm collection="Comments" id="insertCommentForm" type="method" meteormethod="addComment"}}
+    <fieldset>
+        <legend>Comments</legend>
+        {{> afQuickField name="title"}}
+        {{> afQuickField name="body" rows=6 value="Write your comment"}}
+        {{> afQuickField name="docid" value=docid type="hidden"}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Insert</button>
+    {{/autoForm}}
+</template> -->

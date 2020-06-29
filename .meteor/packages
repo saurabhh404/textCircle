@@ -25,3 +25,4 @@ stylus
 babrahams:editable-text@=0.8.30
 accounts-password
 ian:accounts-ui-bootstrap-3
+iron:router
